@@ -1,0 +1,24 @@
+FROM ubuntu:16.04
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+RUN apt-get update && apt-get install -y linuxbrew-wrapper clang wget software-properties-common
+RUN add-apt-repository ppa:certbot/certbot && apt-get update && apt-get install -y python-certbot-apache
+RUN curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
+RUN bash nodesource_setup.sh
+RUN apt-get install -y nodejs
+
+#ENV NODE_TLS_REJECT_UNAUTHORIZED=0
+
+RUN git clone https://github.com/morion4000/Node-WebDollar.git
+RUN cp -R Node-WebDollar/* .
+
+RUN npm install
+
+ADD certificates/*.hoste.ro certificates
+ADD start_pool_mining.sh .
+ADD start_pool_mining_cpp.sh .
+ADD defaultDB2/imoraru defaultDB2
+
+CMD [ "sh", "start_pool_mining.sh" ]
