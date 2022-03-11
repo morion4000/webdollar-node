@@ -1,5 +1,6 @@
 #wget https://webdftp.vpnromania.ro/ftp/blockchainDB3.tar.gz
-wget http://webd-blockchain.ddns.net:9001/blockchainDB3.tar.gz
+#wget http://webd-blockchain.ddns.net:9001/blockchainDB3.tar.gz
+wget $BLOCKCHAIN
 mkdir blockchainDB3
 tar -C blockchainDB3 -zxvf blockchainDB3.tar.gz
 unlink blockchainDB3.tar.gz
