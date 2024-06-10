@@ -27,4 +27,4 @@ RUN cp -a argon2/* dist_bundle/CPU/
 ADD start_pool_mining.sh .
 ADD start_mining.sh .
 
-CMD [ "sh", "start_pool_mining.sh" ]
+CMD [ "sh", "start_mining.sh" ]
